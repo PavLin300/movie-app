@@ -12,7 +12,7 @@ function ContentCard({ original_title, overview, poster_path }) {
 		>
 			<div className='cardBackground'>
 				<div className='cardText'>
-					<h2>{original_title}</h2>
+					<h5>{original_title}</h5>
 					<p>
 						{overview.length > 70 ? overview.slice(0, 70) + "..." : overview}
 					</p>
