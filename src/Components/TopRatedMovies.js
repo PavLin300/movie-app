@@ -1,17 +1,13 @@
 import { useCallback, useEffect, useState } from "react";
 import options from "../data/options";
+import { Button, Container } from "react-bootstrap";
 import ContentList from "./ContentList";
-
-import Button from "react-bootstrap/Button";
-import { Container } from "react-bootstrap";
-
-function MoviePopular() {
+function TopRatedMovies() {
 	const [movieList, setMovieList] = useState([]);
 	const [page, setPage] = useState(1);
-
-	const fetchMovieList = useCallback((page) => {
+	const fetchTopRated = useCallback((page) => {
 		fetch(
-			`https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page}`,
+			`https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=${page}`,
 			options
 		)
 			.then((res) => res.json())
@@ -25,7 +21,9 @@ function MoviePopular() {
 			.catch((err) => console.error(err));
 	}, []);
 
-	useEffect(() => fetchMovieList(page), [page, fetchMovieList]);
+	useEffect(() => {
+		fetchTopRated(page);
+	}, [fetchTopRated, page]);
 
 	return (
 		<Container>
@@ -42,4 +40,4 @@ function MoviePopular() {
 	);
 }
 
-export default MoviePopular;
+export default TopRatedMovies;
