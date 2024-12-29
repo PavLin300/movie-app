@@ -15,10 +15,7 @@ function MoviePopular() {
 			options
 		)
 			.then((res) => res.json())
-			.then((res) => {
-				console.log(res);
-				return res;
-			})
+
 			.then((res) => {
 				setMovieList((prevList) => [...prevList, ...res.results]);
 			})
