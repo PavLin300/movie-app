@@ -5,7 +5,7 @@ function ContentCard({ original_title, name, overview, poster_path }) {
 
 	return (
 		<div
-			className='col-6 col-md-4 col-lg-3 col-xl-2 p-0 contentCard'
+			className='contentCard'
 			style={{
 				backgroundImage: poster_url ? `url(${poster_url})` : "none",
 			}}

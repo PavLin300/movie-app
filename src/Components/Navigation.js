@@ -2,18 +2,26 @@ import { Button, Container } from "react-bootstrap";
 
 import { NavLink } from "react-router";
 
-function Navigation({ navigationItems, setNavigation, activeItem }) {
+function Navigation({ navigationCategories, setNavigation, activeCategory }) {
 	return (
 		<Container>
 			<div className='row text-center align-items-center justify-content-center'>
-				{navigationItems.map((item, index) => (
+				<div className='col-1 my-3'>
+					<NavLink to='/'>
+						<i class='bi bi-house-door' style={{ fontSize: 30 }}></i>
+					</NavLink>
+				</div>
+
+				{navigationCategories.map((category, index) => (
 					<div className='col-md-2 my-3' key={index}>
-						<NavLink to={`/${item.toLowerCase().split(" ").join("-")}`}>
+						<NavLink to={`/${category.toLowerCase().split(" ").join("-")}`}>
 							<Button
-								variant={item === activeItem ? "primary" : "outline-primary"}
-								onClick={() => setNavigation(item)}
+								variant={
+									category === activeCategory ? "primary" : "outline-primary"
+								}
+								onClick={() => setNavigation(category)}
 							>
-								{item}
+								{category}
 							</Button>
 						</NavLink>
 					</div>

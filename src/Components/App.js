@@ -6,13 +6,13 @@ import { useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router";
 import HomePage from "./HomePage";
 function App() {
-	const navigationItems = ["Popular", "Top Rated", "TV shows", "Favorite"];
-	const [active, setActive] = useState("");
+	const navigationCategories = ["Popular", "Top Rated", "TV shows", "Favorite"];
+	const [activeCategory, setActiveCategory] = useState("");
 
 	let location = useLocation();
 
 	useEffect(() => {
-		setActive(
+		setActiveCategory(
 			location.pathname
 				.slice(1, location.pathname.length)
 				.split("-")
@@ -24,9 +24,9 @@ function App() {
 	return (
 		<div className='app'>
 			<Navigation
-				navigationItems={navigationItems}
-				setNavigation={setActive}
-				activeItem={active}
+				navigationCategories={navigationCategories}
+				setNavigation={setActiveCategory}
+				activeCategory={activeCategory}
 			/>
 			{location.pathname.length > 2 ? <Outlet /> : <HomePage />}
 		</div>
