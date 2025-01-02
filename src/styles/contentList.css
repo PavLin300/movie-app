@@ -14,6 +14,11 @@
 	height: 100%;
 	display: flex;
 	align-items: flex-end;
+	transition: 0.3s;
+}
+
+.cardBackground:hover {
+	background: rgb(42, 51, 53, 0);
 }
 
 .cardText {

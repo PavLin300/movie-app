@@ -1,8 +1,9 @@
 import { Container } from "react-bootstrap";
 import MainMovie from "./MainMovie";
 import { useCallback, useEffect, useState } from "react";
-import options from "../data/options";
-import ContentCard from "./ContentCard";
+import options from "../../data/options";
+
+import MightAlsoLike from "./MightAlsoLike";
 
 function HomePage() {
 	const [movieList, setMovieList] = useState([]);
@@ -42,10 +43,10 @@ function HomePage() {
 				<div className='col-md-4'></div>
 				<div className='col-md-8'>
 					<h3 className='text-center my-3'>You might also like: </h3>
-					<div className='d-flex gap-4 justify-content-center flex-wrap pb-3'>
+					<div className='d-flex gap-4 justify-content-center flex-wrap'>
 						{movieList &&
 							movieList.map((listElem, index) => (
-								<ContentCard {...listElem} key={listElem.id + index} />
+								<MightAlsoLike {...listElem} key={listElem.id + index} />
 							))}
 					</div>
 				</div>

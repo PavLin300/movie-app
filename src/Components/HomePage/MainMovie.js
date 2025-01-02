@@ -10,7 +10,7 @@ function MainMovie({ mainMovie }) {
 				<img className='rounded-5 img-fluid' src={poster_url} alt='' />
 			)}
 			<div className='position-absolute bottom-0 start-0 p-3'>
-				<Button variant='dark rounded-pill' size='lg'>
+				<Button variant='dark rounded-circle' style={{ padding: "11px 16px" }}>
 					<i style={{ fontSize: 20 }} className='bi bi-play'></i>
 				</Button>
 				<h3 className='text-white my-3 d-none d-md-block'>

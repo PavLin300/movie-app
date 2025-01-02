@@ -1,0 +1,20 @@
+.mightAlsoLikeCard {
+	height: 200px;
+	width: 250px;
+	background-size: cover;
+	border-radius: 25px;
+	overflow: hidden;
+	cursor: pointer;
+	padding: 0;
+}
+
+.mightAlsoLikeCard .cardText {
+	padding-left: 10px;
+}
+
+@media screen and (max-width: 768px) {
+	.mightAlsoLikeCard {
+		height: 150px;
+		width: 200px;
+	}
+}
