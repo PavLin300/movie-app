@@ -6,7 +6,12 @@ import { useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router";
 import HomePage from "./HomePage/HomePage";
 function App() {
-	const navigationCategories = ["Popular", "Top Rated", "TV shows", "Favorite"];
+	const navigationCategories = [
+		"Popular",
+		"Top Rated",
+		"TV series",
+		"Favorite",
+	];
 	const [activeCategory, setActiveCategory] = useState("");
 
 	let location = useLocation();

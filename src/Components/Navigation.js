@@ -8,7 +8,7 @@ function Navigation({ navigationCategories, setNavigation, activeCategory }) {
 			<div className='row text-center align-items-center justify-content-center'>
 				<div className='col-1 my-3'>
 					<NavLink to='/'>
-						<i class='bi bi-house-door' style={{ fontSize: 30 }}></i>
+						<i className='bi bi-house-door' style={{ fontSize: 30 }}></i>
 					</NavLink>
 				</div>
 
