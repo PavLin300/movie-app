@@ -1,16 +1,17 @@
 import "../../styles/homePage.css";
 import { Button } from "react-bootstrap";
-function MightAlsoLike({ original_title, name, poster_path }) {
+
+function NewTrailerCard({ original_title, name, poster_path }) {
 	const poster_url = `https://image.tmdb.org/t/p/w200` + poster_path;
 	return (
 		<div
-			className='mightAlsoLikeCard'
+			className='newTrailerCard'
 			style={{
 				backgroundImage: poster_url ? `url(${poster_url})` : "none",
 			}}
 		>
 			<div className='cardBackground'>
-				<div className='cardText'>
+				<div className='cardText d-flex gap-3 align-items-center'>
 					<Button
 						variant='light rounded-circle'
 						className='d-inline'
@@ -18,11 +19,11 @@ function MightAlsoLike({ original_title, name, poster_path }) {
 					>
 						<i style={{ fontSize: 20 }} className='bi bi-play'></i>
 					</Button>
-					<h5 className='my-1 d-none d-md-block'>{original_title || name}</h5>
+					<div className='h5'>{original_title || name}</div>
 				</div>
 			</div>
 		</div>
 	);
 }
 
-export default MightAlsoLike;
+export default NewTrailerCard;

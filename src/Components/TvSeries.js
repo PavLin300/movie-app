@@ -6,6 +6,7 @@ import options from "../data/options";
 function TvSeries() {
 	const [tvList, setTvList] = useState([]);
 	const [page, setPage] = useState(1);
+
 	const fetchTvShows = useCallback((page) => {
 		fetch(
 			`https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=${page}}`,
