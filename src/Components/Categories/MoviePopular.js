@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
-import options from "../data/options";
-import ContentList from "./ContentList";
+import options from "../../data/options";
 
 import Button from "react-bootstrap/Button";
 import { Container } from "react-bootstrap";
+import ContentList from "../Content/ContentList";
 
 function MoviePopular() {
 	const [movieList, setMovieList] = useState([]);
@@ -30,7 +30,7 @@ function MoviePopular() {
 
 			<Button
 				className='d-block mx-auto m-4'
-				variant='outline-primary'
+				variant='outline-light'
 				onClick={() => setPage(page + 1)}
 			>
 				Load More...

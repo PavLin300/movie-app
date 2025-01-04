@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
-import ContentList from "./ContentList";
+
 import { Button, Container } from "react-bootstrap";
-import options from "../data/options";
+import options from "../../data/options";
+import ContentList from "../Content/ContentList";
 
 function TvSeries() {
 	const [tvList, setTvList] = useState([]);
@@ -30,7 +31,7 @@ function TvSeries() {
 
 			<Button
 				className='d-block mx-auto m-4'
-				variant='outline-primary'
+				variant='outline-light'
 				onClick={() => setPage(page + 1)}
 			>
 				Load More...

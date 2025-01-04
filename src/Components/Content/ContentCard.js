@@ -1,5 +1,3 @@
-import "../styles/contentList.css";
-
 function ContentCard({ original_title, name, overview, poster_path }) {
 	const poster_url = `https://image.tmdb.org/t/p/w200` + poster_path;
 

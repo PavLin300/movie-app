@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router";
 import App from "./App";
-import TopRatedMovies from "./TopRatedMovies";
-import MoviePopular from "./MoviePopular";
-import TvSeries from "./TvSeries";
+import TopRatedMovies from "./Categories/TopRatedMovies";
+import MoviePopular from "./Categories/MoviePopular";
+import TvSeries from "./Categories/TvSeries";
 
 function AppRoute() {
 	return (

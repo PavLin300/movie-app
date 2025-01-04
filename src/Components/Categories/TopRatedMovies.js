@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
-import options from "../data/options";
+import options from "../../data/options";
 import { Button, Container } from "react-bootstrap";
-import ContentList from "./ContentList";
+import ContentList from "../Content/ContentList";
+
 function TopRatedMovies() {
 	const [movieList, setMovieList] = useState([]);
 	const [page, setPage] = useState(1);
@@ -28,7 +29,7 @@ function TopRatedMovies() {
 
 			<Button
 				className='d-block mx-auto m-4'
-				variant='outline-primary'
+				variant='outline-light'
 				onClick={() => setPage(page + 1)}
 			>
 				Load More...

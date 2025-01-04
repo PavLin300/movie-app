@@ -1,11 +1,14 @@
 import { Container } from "react-bootstrap";
-import MainMovie from "./MainMovie";
+
 import { useCallback, useEffect, useState } from "react";
 import options from "../../data/options";
 
-import MightAlsoLikeCard from "./MightAlsoLikeCard";
-import NewTrailerCard from "./NewTrailerCard";
+import MainMovie from "./MainMovie";
+import TrailerList from "./TrailerList";
+import MightAlsoLikeList from "./MightAlsoLikeList";
 
+import "../../styles/homePage.css";
+import "../../styles/media.css";
 function HomePage() {
 	const [movieList, setMovieList] = useState([]);
 	const [mainMovie, setMainMovie] = useState();
@@ -48,14 +51,11 @@ function HomePage() {
 
 	return (
 		<Container fluid>
-			<div className='row'>
+			<div className='row mainRow'>
 				<div className='col-md-3 order-2  order-md-1 '>
 					<div className='row row-cols-1 '>
-						<div className='col m-auto custom-scroll '>
-							{newTrailers &&
-								newTrailers.map((listElem, index) => (
-									<NewTrailerCard {...listElem} key={listElem.id + index} />
-								))}
+						<div className='col m-auto custom-scroll bg-secondary rounded-5'>
+							<TrailerList trailers={newTrailers} />
 						</div>
 						<div className='col'></div>
 					</div>
@@ -65,12 +65,11 @@ function HomePage() {
 						<div className='col d-flex justify-content-center'>
 							<MainMovie mainMovie={mainMovie} />
 						</div>
-						<h3 className='text-center my-3'>You might also like: </h3>
-						<div className='col d-flex gap-4 justify-content-center flex-wrap '>
-							{movieList &&
-								movieList.map((listElem, index) => (
-									<MightAlsoLikeCard {...listElem} key={listElem.id + index} />
-								))}
+						<h3 className='text-center text-light my-3'>
+							You might also like:
+						</h3>
+						<div className='col'>
+							<MightAlsoLikeList movies={movieList} />
 						</div>
 					</div>
 				</div>

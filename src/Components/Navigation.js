@@ -1,14 +1,21 @@
 import { Button, Container } from "react-bootstrap";
 
 import { NavLink } from "react-router";
+import { useState } from "react";
 
 function Navigation({ navigationCategories, setNavigation, activeCategory }) {
+	const [hovered, setHovered] = useState(false);
 	return (
 		<Container>
-			<div className='row text-center align-items-center justify-content-center'>
+			<div className='navigation row text-center align-items-center justify-content-center'>
 				<div className='col-1 my-3'>
 					<NavLink to='/'>
-						<i className='bi bi-house-door' style={{ fontSize: 30 }}></i>
+						<i
+							className={hovered ? "bi bi-house-door-fill" : "bi bi-house-door"}
+							style={{ color: "#fff", fontSize: 30 }}
+							onMouseEnter={() => setHovered(!hovered)}
+							onMouseLeave={() => setHovered(!hovered)}
+						></i>
 					</NavLink>
 				</div>
 
@@ -17,7 +24,7 @@ function Navigation({ navigationCategories, setNavigation, activeCategory }) {
 						<NavLink to={`/${category.toLowerCase().split(" ").join("-")}`}>
 							<Button
 								variant={
-									category === activeCategory ? "primary" : "outline-primary"
+									category === activeCategory ? "light" : "outline-light"
 								}
 								onClick={() => setNavigation(category)}
 							>

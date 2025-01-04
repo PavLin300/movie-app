@@ -1,4 +1,3 @@
-import "../../styles/homePage.css";
 import { Button } from "react-bootstrap";
 
 function NewTrailerCard({ original_title, name, poster_path }) {

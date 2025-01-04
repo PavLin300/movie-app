@@ -1,5 +1,3 @@
-import "../../styles/homePage.css";
-
 import { Button } from "react-bootstrap";
 function MightAlsoLikeCard({ original_title, name, poster_path }) {
 	const poster_url = `https://image.tmdb.org/t/p/w200` + poster_path;
