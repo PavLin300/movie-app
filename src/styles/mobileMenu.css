@@ -1,0 +1,27 @@
+.mobileMenu {
+	position: absolute;
+	top: 20%;
+	left: 50%;
+
+	width: 70%;
+	height: 500px;
+	background: rgb(42, 51, 53, 1);
+	border-radius: 25px;
+	padding-top: 50px;
+	z-index: 100;
+	color: #fff;
+}
+
+.mobileMenu a {
+	color: #fff;
+}
+
+.mobileMenuBackground {
+	width: 100%;
+	height: 100vh;
+
+	backdrop-filter: blur(10px);
+	position: fixed;
+	z-index: 1;
+	top: 0;
+}

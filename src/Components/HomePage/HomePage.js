@@ -13,6 +13,7 @@ function HomePage() {
 	const [movieList, setMovieList] = useState([]);
 	const [mainMovie, setMainMovie] = useState();
 	const [newTrailers, setNewtrailers] = useState([]);
+
 	const fetchTrailers = useCallback(() => {
 		const asyncFetchTrailers = async () => {
 			let result = await fetch(
@@ -53,8 +54,8 @@ function HomePage() {
 		<Container fluid>
 			<div className='row mainRow'>
 				<div className='col-md-3 order-2  order-md-1 '>
-					<div className='row row-cols-1 '>
-						<div className='col m-auto custom-scroll bg-secondary rounded-5'>
+					<div className='row row-cols-1'>
+						<div className='col m-auto trailerList bg-secondary rounded-5'>
 							<TrailerList trailers={newTrailers} />
 						</div>
 						<div className='col'></div>

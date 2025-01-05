@@ -7,7 +7,7 @@ function ContentList({ list }) {
 			{list &&
 				list.map((listElem, index) => (
 					<div
-						key={listElem.id + index}
+						key={index}
 						className='col-6 col-md-4 col-lg-3 col-xl-2 d-flex justify-content-center'
 					>
 						<ContentCard {...listElem} />

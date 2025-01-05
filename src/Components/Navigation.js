@@ -3,12 +3,18 @@ import { Button, Container } from "react-bootstrap";
 import { NavLink } from "react-router";
 import { useState } from "react";
 
-function Navigation({ navigationCategories, setNavigation, activeCategory }) {
+function Navigation({
+	navigationCategories,
+	setNavigation,
+	activeCategory,
+
+	onClickMobileMenu,
+}) {
 	const [hovered, setHovered] = useState(false);
 	return (
 		<Container>
-			<div className='navigation row text-center align-items-center justify-content-center'>
-				<div className='col-1 my-3'>
+			<div className='d-none d-md-flex row text-center align-items-center justify-content-center'>
+				<div className='col-1 my-3 '>
 					<NavLink to='/'>
 						<i
 							className={hovered ? "bi bi-house-door-fill" : "bi bi-house-door"}
@@ -33,6 +39,15 @@ function Navigation({ navigationCategories, setNavigation, activeCategory }) {
 						</NavLink>
 					</div>
 				))}
+			</div>
+
+			<div className='d-md-none d-flex justify-content-end mb-4 '>
+				<button className='btn' onClick={onClickMobileMenu}>
+					<i
+						className='bi bi-list'
+						style={{ fontSize: 30, color: "#fff", cursor: "pointer" }}
+					></i>
+				</button>
 			</div>
 		</Container>
 	);

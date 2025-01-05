@@ -12,4 +12,20 @@
 	.mainRow {
 		gap: 50px;
 	}
+
+	.trailerList {
+		width: 90%;
+		height: auto;
+		display: flex;
+		gap: 15px;
+		margin-bottom: 50px;
+	}
+
+	.newTrailerCard {
+		flex-shrink: 0;
+	}
+
+	.trailerList::-webkit-scrollbar {
+		height: 7px;
+	}
 }

@@ -11,7 +11,6 @@
 .newTrailerCard {
 	margin: 10px auto;
 	height: 180px;
-
 	max-width: 300px;
 	background-size: cover;
 	border-radius: 25px;
@@ -32,7 +31,7 @@
 }
 
 /* Контейнер со скроллом */
-.custom-scroll {
+.trailerList {
 	width: 300px;
 	height: 55vh;
 
@@ -40,17 +39,17 @@
 }
 
 /* Стилизация скроллбара */
-.custom-scroll::-webkit-scrollbar {
+.trailerList::-webkit-scrollbar {
 	width: 10px; /* Ширина полосы прокрутки */
 }
 
 /* Фон трека (track) */
-.custom-scroll::-webkit-scrollbar-track {
+.trailerList::-webkit-scrollbar-track {
 	border-radius: 5px; /* Закругление трека */
 }
 
 /* Ползунок (thumb) */
-.custom-scroll::-webkit-scrollbar-thumb {
+.trailerList::-webkit-scrollbar-thumb {
 	background: #ffffff; /* Цвет ползунка */
 	border-radius: 5px; /* Закругление ползунка */
 }
