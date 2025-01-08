@@ -3,6 +3,7 @@ import App from "./App";
 import TopRatedMovies from "./Categories/TopRatedMovies";
 import MoviePopular from "./Categories/MoviePopular";
 import TvSeries from "./Categories/TvSeries";
+import ErrorComponent from "./ErrorComponent";
 
 function AppRoute() {
 	return (
@@ -12,6 +13,10 @@ function AppRoute() {
 					<Route path='/popular' element={<MoviePopular />} />
 					<Route path='/top-rated' element={<TopRatedMovies />} />
 					<Route path='/tv-series' element={<TvSeries />} />
+					<Route
+						path='/*'
+						element={<ErrorComponent message={"Page doesn't exist"} />}
+					/>
 				</Route>
 			</Routes>
 		</BrowserRouter>

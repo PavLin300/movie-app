@@ -33,7 +33,7 @@
 /* Контейнер со скроллом */
 .trailerList {
 	width: 300px;
-	height: 55vh;
+	height: 60vh;
 
 	overflow-y: auto;
 }

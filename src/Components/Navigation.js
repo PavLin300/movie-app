@@ -7,10 +7,10 @@ function Navigation({
 	navigationCategories,
 	setNavigation,
 	activeCategory,
-
 	onClickMobileMenu,
 }) {
 	const [hovered, setHovered] = useState(false);
+
 	return (
 		<Container>
 			<div className='d-none d-md-flex row text-center align-items-center justify-content-center'>

@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 import Navigation from "./Navigation";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { Outlet, useLocation } from "react-router";
 import HomePage from "./HomePage/HomePage";
 import MobileMenu from "./MobileMenu";
@@ -14,21 +14,24 @@ function App() {
 		"TV series",
 		"Favorite",
 	];
+
 	const [activeCategory, setActiveCategory] = useState("");
 
 	const [showMobileMenu, setShowMobileMenu] = useState(false);
 
-	let location = useLocation();
+	const location = useLocation();
 
 	useEffect(() => {
-		setActiveCategory(
-			location.pathname
-				.slice(1, location.pathname.length)
-				.split("-")
-				.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-				.join(" ")
-		);
-	}, [location]);
+		const path = location.pathname
+			.slice(1, location.pathname.length)
+			.split("-")
+			.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+			.join(" ");
+
+		if (activeCategory !== path) {
+			setActiveCategory(path);
+		}
+	}, [location.pathname, activeCategory]);
 
 	return (
 		<div className='app'>
