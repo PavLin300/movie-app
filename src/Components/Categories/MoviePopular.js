@@ -4,6 +4,7 @@ import options from "../../data/options";
 import Button from "react-bootstrap/Button";
 import { Container } from "react-bootstrap";
 import ContentList from "../Content/ContentList";
+import Spinner from "../Utilities/Spinner";
 
 function MoviePopular() {
 	const [movieList, setMovieList] = useState([]);
@@ -26,7 +27,13 @@ function MoviePopular() {
 
 	return (
 		<Container>
-			<ContentList list={movieList} />
+			{movieList[0] ? (
+				<ContentList list={movieList} />
+			) : (
+				<div className='text-center'>
+					<Spinner />
+				</div>
+			)}
 
 			<Button
 				className='d-block mx-auto m-4'

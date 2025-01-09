@@ -1,17 +1,18 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
-import Navigation from "./Navigation";
+import Navigation from "./Utilities/Navigation";
 import { useState, useEffect } from "react";
 import { Outlet, useLocation } from "react-router";
 import HomePage from "./HomePage/HomePage";
-import MobileMenu from "./MobileMenu";
+import MobileMenu from "./Utilities/MobileMenu";
 import { AnimatePresence } from "motion/react";
+
 function App() {
 	const navigationCategories = [
 		"Popular",
 		"Top Rated",
-		"TV series",
+		"Tv Series",
 		"Favorite",
 	];
 

@@ -1,6 +1,7 @@
 import ContentCard from "./ContentCard";
 import "../../styles/content.css";
 import "../../styles/media.css";
+
 function ContentList({ list }) {
 	return (
 		<div className='row gap-3 justify-content-center'>

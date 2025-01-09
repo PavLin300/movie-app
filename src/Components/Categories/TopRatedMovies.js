@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import options from "../../data/options";
 import { Button, Container } from "react-bootstrap";
 import ContentList from "../Content/ContentList";
+import Spinner from "../Utilities/Spinner";
 
 function TopRatedMovies() {
 	const [movieList, setMovieList] = useState([]);
@@ -25,7 +26,13 @@ function TopRatedMovies() {
 
 	return (
 		<Container>
-			<ContentList list={movieList} />
+			{movieList[0] ? (
+				<ContentList list={movieList} />
+			) : (
+				<div className='text-center'>
+					<Spinner />
+				</div>
+			)}
 
 			<Button
 				className='d-block mx-auto m-4'

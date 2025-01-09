@@ -1,5 +1,5 @@
 import * as motion from "motion/react-client";
-import "../../src/styles/mobileMenu.css";
+import "../../../src/styles/mobileMenu.css";
 
 import { NavLink } from "react-router";
 export default function MobileMenu({ onClose, navigationCategories }) {

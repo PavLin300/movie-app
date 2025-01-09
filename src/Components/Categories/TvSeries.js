@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Button, Container } from "react-bootstrap";
 import options from "../../data/options";
 import ContentList from "../Content/ContentList";
+import Spinner from "../Utilities/Spinner";
 
 function TvSeries() {
 	const [tvList, setTvList] = useState([]);
@@ -27,7 +28,13 @@ function TvSeries() {
 
 	return (
 		<Container>
-			<ContentList list={tvList} />
+			{tvList[0] ? (
+				<ContentList list={tvList} />
+			) : (
+				<div className='text-center'>
+					<Spinner />
+				</div>
+			)}
 
 			<Button
 				className='d-block mx-auto m-4'

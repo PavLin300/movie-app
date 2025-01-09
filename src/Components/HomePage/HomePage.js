@@ -9,6 +9,8 @@ import MightAlsoLikeList from "./MightAlsoLikeList";
 
 import "../../styles/homePage.css";
 import "../../styles/media.css";
+import Spinner from "../Utilities/Spinner";
+
 function HomePage() {
 	const [movieList, setMovieList] = useState([]);
 	const [mainMovie, setMainMovie] = useState();
@@ -56,7 +58,13 @@ function HomePage() {
 				<div className='col-md-3 order-2  order-md-1 '>
 					<div className='row row-cols-1'>
 						<div className='col m-auto trailerList bg-secondary rounded-5'>
-							<TrailerList trailers={newTrailers} />
+							{newTrailers[0] ? (
+								<TrailerList trailers={newTrailers} />
+							) : (
+								<div className='d-flex justify-content-center position-relative top-50'>
+									<Spinner />
+								</div>
+							)}
 						</div>
 						<div className='col'></div>
 					</div>
@@ -64,13 +72,19 @@ function HomePage() {
 				<div className='col-md-9 order-1  order-md-2'>
 					<div className='row row-cols-1'>
 						<div className='col d-flex justify-content-center'>
-							<MainMovie mainMovie={mainMovie} />
+							{mainMovie ? <MainMovie mainMovie={mainMovie} /> : <Spinner />}
 						</div>
 						<h3 className='text-center text-light my-3'>
 							You might also like:
 						</h3>
 						<div className='col'>
-							<MightAlsoLikeList movies={movieList} />
+							{movieList[0] ? (
+								<MightAlsoLikeList movies={movieList} />
+							) : (
+								<div className='text-center'>
+									<Spinner />
+								</div>
+							)}
 						</div>
 					</div>
 				</div>
