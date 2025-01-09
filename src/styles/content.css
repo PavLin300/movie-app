@@ -29,3 +29,13 @@
 	font-style: normal;
 	font-size: 12px;
 }
+
+.contentDetails div {
+	background: rgb(77, 82, 82);
+	margin: 10px;
+	border-radius: 20px;
+	border: 1px solid rgb(255, 255, 255);
+	padding: 5px 10px;
+	display: inline-block;
+	box-shadow: 4px 6px 86px -2px rgba(0, 0, 0, 1);
+}

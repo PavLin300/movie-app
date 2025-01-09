@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import options from "../../data/options";
+import MainMovie from "../HomePage/MainMovie";
 
 function ContentPage() {
 	const { title } = useParams();
 
-	const [content, setContent] = useState();
+	const [content, setContent] = useState(null);
 	useEffect(() => {
 		async function findMovie(title) {
 			const result = await fetch(
@@ -27,15 +28,21 @@ function ContentPage() {
 		}
 		findMovie(title);
 	}, [title]);
-
-	const poster_url = `https://image.tmdb.org/t/p/w200` + content?.poster_path;
-
-	return (
-		<div>
-			<img src={poster_url} alt='' />
-			<pre>{content && JSON.stringify(content, null, 2)}</pre>
-		</div>
-	);
+	if (content) {
+		return (
+			<div className='d-flex justify-content-center mt-5'>
+				<div className='w-50'>
+					<MainMovie mainMovie={content} width={"100%"} />
+					<p className='contentDetails text-light mt-3'>
+						<div>{content.original_language}</div>
+						<div>{content.release_date}</div>
+					</p>
+					<p className='text-light fs-5'>{content.overview}</p>
+					{/* <pre>{content && JSON.stringify(content, null, 2)}</pre> */}
+				</div>
+			</div>
+		);
+	}
 }
 
 export default ContentPage;

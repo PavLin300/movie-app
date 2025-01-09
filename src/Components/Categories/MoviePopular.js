@@ -38,7 +38,7 @@ function MoviePopular() {
 			<Button
 				className='d-block mx-auto m-4'
 				variant='outline-light'
-				onClick={() => setPage(page + 1)}
+				onClick={() => setPage((prevPage) => prevPage + 1)}
 			>
 				Load More...
 			</Button>

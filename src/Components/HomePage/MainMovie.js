@@ -1,11 +1,11 @@
 import { Button } from "react-bootstrap";
 
-function MainMovie({ mainMovie }) {
+function MainMovie({ mainMovie, width }) {
 	const poster_url =
 		`https://image.tmdb.org/t/p/original` + mainMovie?.backdrop_path;
 
 	return (
-		<div className='w-75 position-relative'>
+		<div className='position-relative' style={{ width: width }}>
 			{mainMovie && (
 				<img className='rounded-5 img-fluid' src={poster_url} alt='' />
 			)}

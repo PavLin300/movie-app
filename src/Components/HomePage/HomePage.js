@@ -72,7 +72,11 @@ function HomePage() {
 				<div className='col-md-9 order-1  order-md-2'>
 					<div className='row row-cols-1'>
 						<div className='col d-flex justify-content-center'>
-							{mainMovie ? <MainMovie mainMovie={mainMovie} /> : <Spinner />}
+							{mainMovie ? (
+								<MainMovie mainMovie={mainMovie} width={"75%"} />
+							) : (
+								<Spinner />
+							)}
 						</div>
 						<h3 className='text-center text-light my-3'>
 							You might also like:
