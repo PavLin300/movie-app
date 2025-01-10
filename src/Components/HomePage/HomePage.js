@@ -57,11 +57,14 @@ function HomePage() {
 			<div className='row mainRow'>
 				<div className='col-md-3 order-2  order-md-1 '>
 					<div className='row row-cols-1'>
-						<div className='col m-auto trailerList bg-secondary rounded-5'>
+						<div
+							className='col m-auto trailerList  rounded-5 border'
+							style={{ background: "#3e5879" }}
+						>
 							{newTrailers[0] ? (
 								<TrailerList trailers={newTrailers} />
 							) : (
-								<div className='d-flex justify-content-center position-relative top-50'>
+								<div className='d-flex justify-content-center  position-relative top-50'>
 									<Spinner />
 								</div>
 							)}

@@ -7,6 +7,7 @@ import { Outlet, useLocation } from "react-router";
 import HomePage from "./HomePage/HomePage";
 import MobileMenu from "./Utilities/MobileMenu";
 import { AnimatePresence } from "motion/react";
+import MovieContext from "./Utilities/MovieContext";
 
 function App() {
 	const navigationCategories = [
@@ -19,6 +20,11 @@ function App() {
 	const [activeCategory, setActiveCategory] = useState("");
 
 	const [showMobileMenu, setShowMobileMenu] = useState(false);
+	const [favoriteList, setFavoriteList] = useState([]);
+
+	function addToFavorite(movie) {
+		setFavoriteList((prevFavorite) => [movie, ...prevFavorite]);
+	}
 
 	const location = useLocation();
 
@@ -35,24 +41,26 @@ function App() {
 	}, [location.pathname, activeCategory]);
 
 	return (
-		<div className='app'>
-			<Navigation
-				navigationCategories={navigationCategories}
-				setNavigation={setActiveCategory}
-				activeCategory={activeCategory}
-				onClickMobileMenu={() => setShowMobileMenu(!showMobileMenu)}
-			/>
-			{location.pathname.length > 2 ? <Outlet /> : <HomePage />}
+		<MovieContext.Provider value={{ favoriteList, addToFavorite }}>
+			<div className='app'>
+				<Navigation
+					navigationCategories={navigationCategories}
+					setNavigation={setActiveCategory}
+					activeCategory={activeCategory}
+					onClickMobileMenu={() => setShowMobileMenu(!showMobileMenu)}
+				/>
+				{location.pathname.length > 2 ? <Outlet /> : <HomePage />}
 
-			<AnimatePresence initial={false}>
-				{showMobileMenu ? (
-					<MobileMenu
-						navigationCategories={navigationCategories}
-						onClose={() => setShowMobileMenu(!showMobileMenu)}
-					/>
-				) : null}
-			</AnimatePresence>
-		</div>
+				<AnimatePresence initial={false}>
+					{showMobileMenu ? (
+						<MobileMenu
+							navigationCategories={navigationCategories}
+							onClose={() => setShowMobileMenu(!showMobileMenu)}
+						/>
+					) : null}
+				</AnimatePresence>
+			</div>
+		</MovieContext.Provider>
 	);
 }
 

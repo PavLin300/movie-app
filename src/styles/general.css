@@ -4,5 +4,12 @@
 
 html,
 .app {
-	background: #3e5879;
+	/* background: #3e5879; */
+	background: rgb(80, 106, 138);
+	background: linear-gradient(
+		90deg,
+		rgba(80, 106, 138, 1) 0%,
+		rgba(71, 62, 121, 1) 43%,
+		rgba(103, 78, 140, 1) 88%
+	);
 }

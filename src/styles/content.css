@@ -30,12 +30,23 @@
 	font-size: 12px;
 }
 
-.contentDetails div {
-	background: rgb(77, 82, 82);
-	margin: 10px;
+.contentDetails {
+	display: flex;
+	justify-content: space-between;
+}
+
+.contentDetails span {
+	margin: 10px 10px 10px 0;
 	border-radius: 20px;
-	border: 1px solid rgb(255, 255, 255);
+
 	padding: 5px 10px;
 	display: inline-block;
 	box-shadow: 4px 6px 86px -2px rgba(0, 0, 0, 1);
+	background: rgb(97, 95, 120);
+	background: linear-gradient(
+		90deg,
+		rgba(97, 95, 120, 1) 0%,
+		rgba(67, 73, 71, 1) 0%,
+		rgba(20, 28, 29, 1) 100%
+	);
 }
