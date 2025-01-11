@@ -26,6 +26,15 @@ function App() {
 		setFavoriteList((prevFavorite) => [movie, ...prevFavorite]);
 	}
 
+	function removeFromFavorite(movie) {
+		const newFavorite = [...favoriteList].filter(
+			(item) =>
+				movie?.original_title !== item?.original_title ||
+				movie?.original_name !== item?.original_name
+		);
+		setFavoriteList(newFavorite);
+	}
+
 	const location = useLocation();
 
 	useEffect(() => {
@@ -41,7 +50,9 @@ function App() {
 	}, [location.pathname, activeCategory]);
 
 	return (
-		<MovieContext.Provider value={{ favoriteList, addToFavorite }}>
+		<MovieContext.Provider
+			value={{ favoriteList, addToFavorite, removeFromFavorite }}
+		>
 			<div className='app'>
 				<Navigation
 					navigationCategories={navigationCategories}

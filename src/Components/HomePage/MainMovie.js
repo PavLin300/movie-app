@@ -14,7 +14,7 @@ function MainMovie({ mainMovie, width }) {
 					<i style={{ fontSize: 20 }} className='bi bi-play'></i>
 				</Button>
 				<h3 className='text-white my-3 d-none d-md-block'>
-					{mainMovie && mainMovie.original_title}
+					{(mainMovie && mainMovie.original_title) || mainMovie.original_name}
 				</h3>
 			</div>
 		</div>

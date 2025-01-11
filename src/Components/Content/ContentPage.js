@@ -6,10 +6,19 @@ import MovieContext from "../Utilities/MovieContext";
 
 function ContentPage() {
 	const { title } = useParams();
-	const { addToFavorite } = useContext(MovieContext);
-	console.log(addToFavorite);
+	const { favoriteList, addToFavorite, removeFromFavorite } =
+		useContext(MovieContext);
 
 	const [content, setContent] = useState(null);
+	const [liked, setLiked] = useState(false);
+
+	function handleLike() {
+		if (liked) {
+			removeFromFavorite(content);
+		} else {
+			addToFavorite(content);
+		}
+	}
 
 	useEffect(() => {
 		async function findMovie(title) {
@@ -19,6 +28,8 @@ function ContentPage() {
 			);
 			const json = await result.json();
 
+			let isLiked;
+
 			if (!json.results.length) {
 				const result = await fetch(
 					`https://api.themoviedb.org/3/search/tv?query=${title}&include_adult=false&language=en-US&page=1`,
@@ -26,12 +37,20 @@ function ContentPage() {
 				);
 				const json = await result.json();
 				setContent(json.results[0]);
+				isLiked = favoriteList.find(
+					(elem) => elem.original_name === json.results[0].original_name
+				);
 			} else {
 				setContent(json.results[0]);
+				isLiked = favoriteList.find(
+					(elem) => elem.original_title === json.results[0].original_title
+				);
 			}
+
+			setLiked(isLiked);
 		}
 		findMovie(title);
-	}, [title]);
+	}, [title, favoriteList]);
 
 	return (
 		<>
@@ -46,11 +65,20 @@ function ContentPage() {
 							</div>
 							<div>
 								<span>Rating: {content.vote_average}</span>
-								<button onClick={() => addToFavorite(content)}>Add</button>
+								<button className='btn' onClick={handleLike}>
+									{liked ? (
+										<i
+											className='bi bi-heart-fill'
+											style={{ fontSize: 30 }}
+										></i>
+									) : (
+										<i className='bi bi-heart' style={{ fontSize: 30 }}></i>
+									)}
+								</button>
 							</div>
 						</div>
 						<p className='text-light fs-5'>{content.overview}</p>
-						<pre>{content && JSON.stringify(content, null, 2)}</pre>
+						{/* <pre>{content && JSON.stringify(content, null, 2)}</pre> */}
 					</div>
 				</div>
 			)}
