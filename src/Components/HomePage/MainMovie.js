@@ -1,11 +1,15 @@
 import { Button } from "react-bootstrap";
+import noPicture from "../../images/no-picture.jpg";
+function MainMovie({ mainMovie, width, ...props }) {
+	let poster_url = noPicture;
 
-function MainMovie({ mainMovie, width }) {
-	const poster_url =
-		`https://image.tmdb.org/t/p/original` + mainMovie?.backdrop_path;
+	if (mainMovie?.backdrop_path) {
+		poster_url =
+			`https://image.tmdb.org/t/p/original` + mainMovie.backdrop_path;
+	}
 
 	return (
-		<div className='position-relative' style={{ width: width }}>
+		<div className='position-relative' style={{ width: width }} {...props}>
 			{mainMovie && (
 				<img className='rounded-5 img-fluid' src={poster_url} alt='' />
 			)}

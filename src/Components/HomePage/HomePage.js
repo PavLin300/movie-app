@@ -10,11 +10,14 @@ import MightAlsoLikeList from "./MightAlsoLikeList";
 import "../../styles/homePage.css";
 import "../../styles/media.css";
 import Spinner from "../Utilities/Spinner";
+import { useNavigate } from "react-router";
 
 function HomePage() {
 	const [movieList, setMovieList] = useState([]);
 	const [mainMovie, setMainMovie] = useState();
 	const [newTrailers, setNewtrailers] = useState([]);
+
+	const navigate = useNavigate();
 
 	const fetchTrailers = useCallback(() => {
 		const asyncFetchTrailers = async () => {
@@ -76,7 +79,11 @@ function HomePage() {
 					<div className='row row-cols-1'>
 						<div className='col d-flex justify-content-center'>
 							{mainMovie ? (
-								<MainMovie mainMovie={mainMovie} width={"75%"} />
+								<MainMovie
+									mainMovie={mainMovie}
+									width={"75%"}
+									onClick={() => navigate(`/${mainMovie.original_title}`)}
+								/>
 							) : (
 								<Spinner />
 							)}

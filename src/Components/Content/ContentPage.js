@@ -12,6 +12,8 @@ function ContentPage() {
 	const [content, setContent] = useState(null);
 	const [liked, setLiked] = useState(false);
 
+	const defaultValue = "No info";
+
 	function handleLike() {
 		if (liked) {
 			removeFromFavorite(content);
@@ -36,6 +38,7 @@ function ContentPage() {
 					options
 				);
 				const json = await result.json();
+
 				setContent(json.results[0]);
 				isLiked = favoriteList.find(
 					(elem) => elem.original_name === json.results[0].original_name
@@ -56,15 +59,15 @@ function ContentPage() {
 		<>
 			{content && (
 				<div className='d-flex justify-content-center mt-5'>
-					<div className='w-50'>
+					<div className='col-10 col-md-6'>
 						<MainMovie mainMovie={content} width={"100%"} />
 						<div className='contentDetails text-light mt-3 '>
 							<div>
-								<span>{content.original_language}</span>
-								<span>{content.release_date}</span>
+								<span>{content.original_language || defaultValue}</span>
+								<span>{content.release_date || defaultValue}</span>
 							</div>
 							<div>
-								<span>Rating: {content.vote_average}</span>
+								<span>Rating: {content.vote_average || defaultValue}</span>
 								<button className='btn' onClick={handleLike}>
 									{liked ? (
 										<i
@@ -77,7 +80,9 @@ function ContentPage() {
 								</button>
 							</div>
 						</div>
-						<p className='text-light fs-5'>{content.overview}</p>
+						<p className='text-light fs-5'>
+							{content.overview || defaultValue}
+						</p>
 						{/* <pre>{content && JSON.stringify(content, null, 2)}</pre> */}
 					</div>
 				</div>

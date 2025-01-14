@@ -8,7 +8,11 @@ function Favorite() {
 
 	return (
 		<Container>
-			<ContentList list={favoriteList} />
+			{favoriteList.length > 0 ? (
+				<ContentList list={favoriteList} />
+			) : (
+				<h1 className='text-light text-center mt-5'>Your list is empty...</h1>
+			)}
 		</Container>
 	);
 }
