@@ -2,7 +2,7 @@
 	.mightAlsoLikeCard,
 	.newTrailerCard {
 		height: 150px;
-		width: 200px;
+		width: 170px;
 	}
 	.contentCard {
 		height: 250px;
@@ -23,6 +23,10 @@
 
 	.newTrailerCard {
 		flex-shrink: 0;
+	}
+
+	.cardText div {
+		font-size: 1rem;
 	}
 
 	.trailerList::-webkit-scrollbar {

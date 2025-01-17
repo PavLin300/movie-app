@@ -3,11 +3,13 @@ import { useParams } from "react-router";
 import options from "../../data/options";
 import MainMovie from "../HomePage/MainMovie";
 import MovieContext from "../Utilities/MovieContext";
+import RecentlyContext from "../Utilities/RecenltyContext";
 
 function ContentPage() {
 	const { title } = useParams();
 	const { favoriteList, addToFavorite, removeFromFavorite } =
 		useContext(MovieContext);
+	const { addToRecentlySeen } = useContext(RecentlyContext);
 
 	const [content, setContent] = useState(null);
 	const [liked, setLiked] = useState(false);
@@ -52,8 +54,15 @@ function ContentPage() {
 
 			setLiked(isLiked);
 		}
+
 		findMovie(title);
 	}, [title, favoriteList]);
+
+	useEffect(() => {
+		if (content) {
+			addToRecentlySeen(content);
+		}
+	}, [content, addToRecentlySeen]);
 
 	return (
 		<>

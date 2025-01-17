@@ -1,6 +1,6 @@
 import { Container } from "react-bootstrap";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import options from "../../data/options";
 
 import MainMovie from "./MainMovie";
@@ -11,6 +11,7 @@ import "../../styles/homePage.css";
 import "../../styles/media.css";
 import Spinner from "../Utilities/Spinner";
 import { useNavigate } from "react-router";
+import RecentlyContext from "../Utilities/RecenltyContext";
 
 function HomePage() {
 	const [movieList, setMovieList] = useState([]);
@@ -18,6 +19,7 @@ function HomePage() {
 	const [newTrailers, setNewtrailers] = useState([]);
 
 	const navigate = useNavigate();
+	const { recentlySeenList } = useContext(RecentlyContext);
 
 	const fetchTrailers = useCallback(() => {
 		const asyncFetchTrailers = async () => {
@@ -72,7 +74,11 @@ function HomePage() {
 								</div>
 							)}
 						</div>
-						<div className='col'></div>
+						<div className='col'>
+							{recentlySeenList.map((movie, index) => (
+								<p key={index}>{movie.original_title}</p>
+							))}
+						</div>
 					</div>
 				</div>
 				<div className='col-md-9 order-1  order-md-2'>

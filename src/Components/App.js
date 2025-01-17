@@ -2,12 +2,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 import Navigation from "./Utilities/Navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Outlet, useLocation } from "react-router";
 import HomePage from "./HomePage/HomePage";
 import MobileMenu from "./Utilities/MobileMenu";
 import { AnimatePresence } from "motion/react";
 import MovieContext from "./Utilities/MovieContext";
+import RecentlyContext from "./Utilities/RecenltyContext";
 
 function App() {
 	const navigationCategories = [
@@ -21,6 +22,15 @@ function App() {
 
 	const [showMobileMenu, setShowMobileMenu] = useState(false);
 	const [favoriteList, setFavoriteList] = useState([]);
+	const [recentlySeenList, setRecentlySeenList] = useState([]);
+
+	const addToRecentlySeen = useCallback(
+		function addToRecentlySeen(movie) {
+			if (recentlySeenList[0]?.id === movie.id) return;
+			setRecentlySeenList((prevSeen) => [movie, ...prevSeen]);
+		},
+		[recentlySeenList]
+	);
 
 	function addToFavorite(movie) {
 		setFavoriteList((prevFavorite) => [movie, ...prevFavorite]);
@@ -50,28 +60,30 @@ function App() {
 	}, [location.pathname, activeCategory]);
 
 	return (
-		<MovieContext.Provider
-			value={{ favoriteList, addToFavorite, removeFromFavorite }}
-		>
-			<div className='app'>
-				<Navigation
-					navigationCategories={navigationCategories}
-					setNavigation={setActiveCategory}
-					activeCategory={activeCategory}
-					onClickMobileMenu={() => setShowMobileMenu(!showMobileMenu)}
-				/>
-				{location.pathname.length > 2 ? <Outlet /> : <HomePage />}
+		<RecentlyContext.Provider value={{ addToRecentlySeen, recentlySeenList }}>
+			<MovieContext.Provider
+				value={{ favoriteList, addToFavorite, removeFromFavorite }}
+			>
+				<div className='app'>
+					<Navigation
+						navigationCategories={navigationCategories}
+						setNavigation={setActiveCategory}
+						activeCategory={activeCategory}
+						onClickMobileMenu={() => setShowMobileMenu(!showMobileMenu)}
+					/>
+					{location.pathname.length > 2 ? <Outlet /> : <HomePage />}
 
-				<AnimatePresence initial={false}>
-					{showMobileMenu ? (
-						<MobileMenu
-							navigationCategories={navigationCategories}
-							onClose={() => setShowMobileMenu(!showMobileMenu)}
-						/>
-					) : null}
-				</AnimatePresence>
-			</div>
-		</MovieContext.Provider>
+					<AnimatePresence initial={false}>
+						{showMobileMenu ? (
+							<MobileMenu
+								navigationCategories={navigationCategories}
+								onClose={() => setShowMobileMenu(!showMobileMenu)}
+							/>
+						) : null}
+					</AnimatePresence>
+				</div>
+			</MovieContext.Provider>
+		</RecentlyContext.Provider>
 	);
 }
 
