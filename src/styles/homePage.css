@@ -19,6 +19,11 @@
 	padding: 0;
 }
 
+.recentlySeenList {
+	max-width: 300px;
+	height: 38vh;
+}
+
 .newTrailerCard .cardText {
 	width: 100%;
 	backdrop-filter: blur(10px);
@@ -33,7 +38,7 @@
 /* Контейнер со скроллом */
 .trailerList {
 	width: 300px;
-	height: 60vh;
+	height: 50vh;
 
 	overflow-y: auto;
 }

@@ -12,6 +12,7 @@ import "../../styles/media.css";
 import Spinner from "../Utilities/Spinner";
 import { useNavigate } from "react-router";
 import RecentlyContext from "../Utilities/RecenltyContext";
+import RecentlySeen from "./RecentlySeen";
 
 function HomePage() {
 	const [movieList, setMovieList] = useState([]);
@@ -61,7 +62,7 @@ function HomePage() {
 		<Container fluid>
 			<div className='row mainRow'>
 				<div className='col-md-3 order-2  order-md-1 '>
-					<div className='row row-cols-1'>
+					<div className='row row-cols-1 gap-4'>
 						<div
 							className='col m-auto trailerList  rounded-5 border'
 							style={{ background: "#3e5879" }}
@@ -75,9 +76,7 @@ function HomePage() {
 							)}
 						</div>
 						<div className='col'>
-							{recentlySeenList.map((movie, index) => (
-								<p key={index}>{movie.original_title}</p>
-							))}
+							<RecentlySeen list={recentlySeenList} />
 						</div>
 					</div>
 				</div>
